@@ -30,6 +30,10 @@ $(document).ready(function(){
             this.reset();
         });
 
+        var add = "<tr><td id='name'></td><td id='role'><td id='date'></td></td><td id='months-worked'></td><td id='month-rate'></td><td id='tot-billed'></td><td></td></tr>";
+            
+        $("table tbody").append(add);
+
         database.ref().on("child_added", function(snapshot){
             var sv = snapshot.val();
 
@@ -38,13 +42,15 @@ $(document).ready(function(){
             console.log(sv.start);
             console.log(sv.billed);
 
-            $("#name").text(sv.name);
-            $("#role").text(sv.role);
-            $("#date").text(sv.start);
+            $("#name").filter(":last").text(sv.name);
+            $("#role").filter(":last").text(sv.role);
+            $("#date").filter(":last").text(sv.start);
             // $("#months-worked").text(sv.);
             // $("#month-rate").text(sv.);
-            $("#tot-billed").text(sv.billed);
+            $("#tot-billed").filter(":last").text(sv.billed);
         });
+
+
     });
 
 
