@@ -10,7 +10,7 @@
   firebase.initializeApp(config);
 
   var database = firebase.database();
-  
+
 $(document).ready(function(){
 
     $("#submit").on("click", function(){
@@ -26,6 +26,14 @@ $(document).ready(function(){
             billed: billed
         });
 
+        $('#myform').each(function(){
+            this.reset();
+        });
+
+        database.ref().on("child-added", function(snapshot){
+            var sv = snapshot.val();
+
+        }
     });
 
 
