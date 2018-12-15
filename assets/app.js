@@ -30,10 +30,21 @@ $(document).ready(function(){
             this.reset();
         });
 
-        database.ref().on("child-added", function(snapshot){
+        database.ref().on("child_added", function(snapshot){
             var sv = snapshot.val();
 
-        }
+            console.log(sv.name);
+            console.log(sv.role);
+            console.log(sv.start);
+            console.log(sv.billed);
+
+            $("#name").text(sv.name);
+            $("#role").text(sv.role);
+            $("#date").text(sv.start);
+            // $("#months-worked").text(sv.);
+            // $("#month-rate").text(sv.);
+            $("#tot-billed").text(sv.billed);
+        });
     });
 
 
